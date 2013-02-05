@@ -23,8 +23,8 @@ def _message_length(message):
 
 def suddendeathmessage(message):
   msg_len = _message_length(message)
-  header_chars = msg_len/2+2
-  footer_chars = (msg_len/2)*2+1
+  header_chars = msg_len//2+2
+  footer_chars = (msg_len//2)*2+1
   footer_pattern = cycle([u"Y", u"^"])
 
   header = u"＿" + u"人"*header_chars + u"＿"
@@ -41,7 +41,9 @@ def main():
   if len(sys.argv) < 2:
     message = default_message
   else:
-    message = sys.argv[1].decode("utf-8")
+    message = sys.argv[1]
+    if sys.version_info.major == 2:
+      message = message.decode("utf-8")
 
   print(suddendeathmessage(message))
 
