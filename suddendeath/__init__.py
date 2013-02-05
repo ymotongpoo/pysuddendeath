@@ -8,6 +8,7 @@ from itertools import imap, cycle
 import sys
 from unicodedata import east_asian_width
 
+codec = "utf-8"
 default_message = u"突然の死"
 
 def _message_length(message):
@@ -43,9 +44,9 @@ def main():
   else:
     message = sys.argv[1]
     if sys.version_info.major == 2:
-      message = message.decode("utf-8")
+      message = message.decode(codec)
 
-  print(suddendeathmessage(message))
+  print(suddendeathmessage(message).encode(codec))
 
 
 if __name__ == '__main__':
