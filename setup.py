@@ -57,7 +57,7 @@ setuptools.setup(
     author='ymotongpoo',
     author_email='ymotongpoo@gmail.com',
     packages = ['suddendeath'],
-    url='http://github.com/ymotongpoo/suddendeath/',
+    url='http://github.com/ymotongpoo/pysuddendeath/',
     license='PSL',
     entry_points = {
         'console_scripts': [

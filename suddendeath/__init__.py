@@ -43,7 +43,7 @@ def main():
   else:
     message = sys.argv[1].decode("utf-8")
 
-  print suddendeathmessage(message)
+  print(suddendeathmessage(message))
 
 
 if __name__ == '__main__':
