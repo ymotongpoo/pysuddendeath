@@ -9,6 +9,9 @@ import sys
 from unicodedata import east_asian_width
 
 codec = "utf-8"
+if sys.platform == "win32":
+  codec = "mbcs"
+
 default_message = u"突然の死"
 
 def _message_length(message):
