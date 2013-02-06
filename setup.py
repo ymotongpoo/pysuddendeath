@@ -17,7 +17,7 @@ def _read(name):
     except:
         return ""
 
-version = '0.1.0'
+version = '0.2.0'
 name = 'suddendeath'
 short_description = '`suddendeath` generates "突然の死" message.'
 readme = _read('README')
