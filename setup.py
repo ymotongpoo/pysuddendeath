@@ -17,7 +17,7 @@ def _read(name):
     except:
         return ""
 
-version = '0.2.0'
+version = '0.2.3'
 name = 'suddendeath'
 short_description = '`suddendeath` generates "突然の死" message.'
 readme = _read('README')
@@ -33,7 +33,7 @@ classifiers = [
     'Programming Language :: Python :: 2.6',
     'Programming Language :: Python :: 2.7',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.2',
+    'Programming Language :: Python :: 3.3',
     'Topic :: Utilities',
     ]
 
