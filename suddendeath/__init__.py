@@ -7,12 +7,19 @@ suddendeath module generates "突然の死" like messages.
 from itertools import imap, cycle
 import sys
 from unicodedata import east_asian_width
+import twitter
+import argparse
+import os
+import json
+
 
 codec = "utf-8"
 if sys.platform == "win32":
   codec = "mbcs"
 
 default_message = u"突然の死"
+
+secrets_file = os.path.join(os.environ['HOME'], ".suddendeath")
 
 def _message_length(message):
   length = 0
@@ -42,15 +49,24 @@ def suddendeathmessage(message):
 
 
 def main():
-  if len(sys.argv) < 2:
+  parser = argparse.ArgumentParser(description="suddendeath command")
+  parser.add_argument('-t', '--twitter', action="store_true")
+  parser.add_argument('message', action="store", nargs='?')
+  args = vars(parser.parse_args())
+  message = args['message']
+  if message is None:
     message = default_message
+  elif sys.version_info.major == 2:
+    message = message.decode(codec)
+  
+  if not args['twitter']:
+    print(suddendeathmessage(message).encode(codec))
   else:
-    message = sys.argv[1]
-    if sys.version_info.major == 2:
-      message = message.decode(codec)
-
-  print(suddendeathmessage(message).encode(codec))
-
+    with open(secrets_file) as fp:
+      data = json.load(fp)
+      api = twitter.Api(**data)
+      status = api.PostUpdate(suddendeathmessage(message).encode(codec))
+      print status.text
 
 if __name__ == '__main__':
   main()
