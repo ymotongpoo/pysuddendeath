@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/lexifdev/pysuddendeath.svg?branch=master)](https://travis-ci.org/lexifdev/pysuddendeath)
-
-
 `suddendeath` is a package to generate "突然の死" like message
 
 Setup
