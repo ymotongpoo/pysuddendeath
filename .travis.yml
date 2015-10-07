@@ -5,7 +5,5 @@ python:
 - 2.7
 - 3.3
 - 3.5
-install:
-- pip install pytest
 script:
 - python setup.py test
