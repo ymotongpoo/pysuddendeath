@@ -73,7 +73,7 @@ setuptools.setup(
             'suddendeath=suddendeath.__init__:main',
         ],
     },
-    tests_require=['pytest>=2.8.1'],
+    tests_require=['pytest'],
     cmdclass={
         'test': PyTest,
     }
