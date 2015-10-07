@@ -1,6 +1,10 @@
 *~
 *.egg-info
+*.egg
 *.pyc
 *.pyo
 .DS_Store
-
+.cache/
+.coverage
+.tox
+.idea
