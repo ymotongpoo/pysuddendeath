@@ -1,6 +1,18 @@
 History
 =======
 
+0.3.0
+-----
+
+- more Python 3 support, cut off Python 2 support.
+
+
+0.2.x
+-----
+
+- nit fixes
+
+
 0.1.0
 -----
 

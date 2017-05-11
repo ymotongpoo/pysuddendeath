@@ -1,11 +1,7 @@
 # -*- coding:utf-8 -*-
 
-try:
-    import setuptools
-    from setuptools.command.test import test as TestCommand
-except ImportError:
-    import distribute_setup
-    distribute_setup.use_setuptools()
+import setuptools
+from setuptools.command.test import test as TestCommand
 
 import os
 import sys
@@ -18,7 +14,7 @@ def _read(name):
     except:
         return ""
 
-version = '0.2.3'
+version = '0.3.0'
 name = 'suddendeath'
 short_description = '`suddendeath` generates "突然の死" message.'
 readme = _read('README')
@@ -45,13 +41,13 @@ class PyTest(TestCommand):
 
 classifiers = [
     'Development Status :: 2 - Pre-Alpha',
-    'License :: OSI Approved :: Python Software Foundation License',
+    'License :: OSI Approved :: Apache Software License',
     'Programming Language :: Python',
     'Programming Language :: Python :: 2',
     'Programming Language :: Python :: 2.6',
     'Programming Language :: Python :: 2.7',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.3',
+    'Programming Language :: Python :: 3.4',
     'Programming Language :: Python :: 3.5',
     'Topic :: Utilities',
 ]
@@ -67,7 +63,7 @@ setuptools.setup(
     author_email='ymotongpoo@gmail.com',
     packages=['suddendeath'],
     url='http://github.com/ymotongpoo/pysuddendeath/',
-    license='PSL',
+    license='Apache-2.0',
     entry_points={
         'console_scripts': [
             'suddendeath=suddendeath.__init__:main',

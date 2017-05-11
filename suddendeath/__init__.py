@@ -3,59 +3,59 @@
 
 suddendeath module generates "突然の死" like messages.
 """
-from __future__ import unicode_literals
+
 from itertools import cycle
 try:
-  from itertools import imap
+
 except ImportError:
-  imap = map
+    imap = map
 
 import sys
 from unicodedata import east_asian_width
 
 codec = "utf-8"
 if sys.platform == "win32":
-  codec = "mbcs"
+    codec = "mbcs"
 
-default_message = u"突然の死"
+default_message = "突然の死"
 
 def _message_length(message):
-  length = 0
-  for c in imap(east_asian_width, message):
-    if c == 'W':
-      length += 2
-    elif c == 'Na':
-      length += 1
+    length = 0
+    for c in map(east_asian_width, message):
+        if c == 'W':
+            length += 2
+        elif c == 'Na':
+            length += 1
 
-  return length
+    return length
 
 
 def suddendeathmessage(message):
-  msg_len = _message_length(message)
-  header_chars = msg_len//2+2
-  footer_chars = (msg_len//2)*2+1
-  footer_pattern = cycle([u"Y", u"^"])
+    msg_len = _message_length(message)
+    header_chars = msg_len // 2 + 2
+    footer_chars = (msg_len // 2) * 2 + 1
+    footer_pattern = cycle(["Y", "^"])
 
-  header = u"＿" + u"人"*header_chars + u"＿"
-  footer = u"￣"
-  for i in range(footer_chars):
-    footer += next(footer_pattern)
-  footer += u"￣"
+    header = "＿" + "人" * header_chars + "＿"
+    footer = "￣"
+    for i in range(footer_chars):
+        footer += next(footer_pattern)
+    footer += "￣"
 
-  middle = u"＞　" + message + u"　＜"
-  return u"\n".join([header, middle, footer])
+    middle = "＞　" + message + "　＜"
+    return "\n".join([header, middle, footer])
 
 
 def main():
-  if len(sys.argv) < 2:
-    message = default_message
-  else:
-    message = sys.argv[1]
-    if sys.version_info.major == 2:
-      message = message.decode(codec)
+    if len(sys.argv) < 2:
+        message = default_message
+    else:
+        message = sys.argv[1]
+        if sys.version_info.major == 2:
+            message = message.decode(codec)
 
-  print(suddendeathmessage(message).encode(codec))
+    print((suddendeathmessage(message).encode(codec)))
 
 
 if __name__ == '__main__':
-  main()
+    main()
