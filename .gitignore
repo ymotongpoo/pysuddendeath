@@ -8,3 +8,5 @@
 .coverage
 .tox
 .idea
+dist
+build
