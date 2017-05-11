@@ -3,8 +3,13 @@
 
 suddendeath module generates "突然の死" like messages.
 """
+from __future__ import unicode_literals
+from itertools import cycle
+try:
+  from itertools import imap
+except ImportError:
+  imap = map
 
-from itertools import imap, cycle
 import sys
 from unicodedata import east_asian_width
 
@@ -34,7 +39,7 @@ def suddendeathmessage(message):
   header = u"＿" + u"人"*header_chars + u"＿"
   footer = u"￣"
   for i in range(footer_chars):
-    footer += footer_pattern.next()
+    footer += next(footer_pattern)
   footer += u"￣"
 
   middle = u"＞　" + message + u"　＜"
