@@ -5,40 +5,50 @@ suddendeath module generates "突然の死" like messages.
 """
 
 from itertools import cycle
-try:
-
-except ImportError:
-    imap = map
 
 import sys
 from unicodedata import east_asian_width
 
-codec = "utf-8"
+CODEC = "utf-8"
 if sys.platform == "win32":
-    codec = "mbcs"
+    CODEC = "mbcs"
 
-default_message = "突然の死"
+DEFAULT_MESSAGE = "突然の死"
 
-def _message_length(message):
+
+def message_length(message):
+    '''
+    message_length returns visual length of message.
+    Ascii chars are counted as 1, non-asciis are 2.
+
+    :param str message: random unicode mixed text
+    :rtype: int
+    '''
     length = 0
-    for c in map(east_asian_width, message):
-        if c == 'W':
+    for char in map(east_asian_width, message):
+        if char == 'W':
             length += 2
-        elif c == 'Na':
+        elif char == 'Na':
             length += 1
 
     return length
 
 
 def suddendeathmessage(message):
-    msg_len = _message_length(message)
-    header_chars = msg_len // 2 + 2
-    footer_chars = (msg_len // 2) * 2 + 1
+    '''
+    suddendeathmessage returns "突然の死" like ascii art decorated message string.
+
+    :param str message: random unicode mixed text
+    :rtype: str
+    '''
+    msg_len = message_length(message)
+    header_len = msg_len // 2 + 2
+    footer_len = (msg_len // 2) * 2 + 1
     footer_pattern = cycle(["Y", "^"])
 
-    header = "＿" + "人" * header_chars + "＿"
+    header = "＿" + "人" * header_len + "＿"
     footer = "￣"
-    for i in range(footer_chars):
+    for _ in range(footer_len):
         footer += next(footer_pattern)
     footer += "￣"
 
@@ -48,13 +58,13 @@ def suddendeathmessage(message):
 
 def main():
     if len(sys.argv) < 2:
-        message = default_message
+        message = DEFAULT_MESSAGE
     else:
         message = sys.argv[1]
         if sys.version_info.major == 2:
-            message = message.decode(codec)
+            message = message.decode(CODEC)
 
-    print((suddendeathmessage(message).encode(codec)))
+    print((suddendeathmessage(message).encode(CODEC)))
 
 
 if __name__ == '__main__':
