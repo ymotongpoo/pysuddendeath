@@ -17,10 +17,11 @@
 suddendeath module generates "突然の死" like messages.
 """
 
-from itertools import cycle
-
 import sys
+from itertools import cycle
 from unicodedata import east_asian_width
+
+__version__ = "0.5.2"
 
 CODEC = "utf-8"
 if sys.platform == "win32":
@@ -29,13 +30,10 @@ if sys.platform == "win32":
 DEFAULT_MESSAGE = "突然の死"
 
 
-def message_length(message):
+def message_length(message: str) -> int:
     '''
     message_length returns visual length of message.
     Ascii chars are counted as 1, non-asciis are 2.
-
-    :param str message: random unicode mixed text
-    :rtype: int
     '''
     length = 0
     for char in map(east_asian_width, message):
@@ -47,12 +45,9 @@ def message_length(message):
     return length
 
 
-def suddendeathmessage(message):
+def suddendeathmessage(message: str) -> str:
     '''
     suddendeathmessage returns "突然の死" like ascii art decorated message string.
-
-    :param str message: random unicode mixed text
-    :rtype: str
     '''
     msg_len = message_length(message)
     header_len = msg_len // 2 + 2
@@ -69,16 +64,3 @@ def suddendeathmessage(message):
     return "\n".join([header, middle, footer])
 
 
-def main():
-    if len(sys.argv) < 2:
-        message = DEFAULT_MESSAGE
-    else:
-        message = sys.argv[1]
-        if sys.version_info.major == 2:
-            message = message.decode(CODEC)
-
-    print((suddendeathmessage(message).encode(CODEC)))
-
-
-if __name__ == '__main__':
-    main()

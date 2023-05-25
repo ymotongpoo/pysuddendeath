@@ -5,7 +5,7 @@ Setup
 
 ::
 
-  $ easy_install suddendeath
+  $ pip install suddendeath
 
 
 Run

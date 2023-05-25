@@ -1,6 +1,23 @@
 History
 =======
 
+0.5.2
+-----
+
+- fix module output bug
+
+0.5.1
+-----
+
+- support for module execution
+- update README
+
+
+0.5.0
+-----
+
+- replace setup.py with pyproject.toml
+
 0.3.0
 -----
 

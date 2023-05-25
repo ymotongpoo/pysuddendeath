@@ -1,0 +1,35 @@
+[project]
+name = "suddendeath"
+description = "suddendeath generates 突然の死 message."
+readme = "README.rst"
+authors = [
+    {name = "Yoshi Yamaguchi", email = "ymotongpoo@gmail.com"},
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Natural Language :: Japanese",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.7"
+dependencies = []
+dynamic = ["version"]
+
+[project.urls]
+"Source Code" = "https://github.com/ymotongpoo/pysuddendeath"
+"Issue Tracker" = "https://github.com/ymotongpoo/pysuddendeath/issues"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+version = {attr = "suddendeath.__version__"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

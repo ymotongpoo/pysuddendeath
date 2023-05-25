@@ -1,1 +1,3 @@
-include HISTORY.txt
+include LICENSE
+exclude README.rst
+global-exclude *.py[cod]
